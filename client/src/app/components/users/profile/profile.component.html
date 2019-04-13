@@ -1,0 +1,22 @@
+<div *ngIf="user">
+  {{user.name}}
+  <div class="edit-profile-btn">
+      <!-- <Link class="btn btn-primary">
+          Edit
+      </Link> -->
+  </div>
+  <div class="rela-block push-down">
+    <div class="rela-block profile-card">
+    <div class="profile-pic" [ngStyle]="{'background-image':'url('+user.picture+')'}" id="profile_pic">
+    </div>
+    <div class="rela-block profile-name-container">
+      <div class="rela-block user-name" id="user_name">{{user.username}}</div>
+      <div class="rela-block user-desc" id="user_description">{{user.address}}</div>
+    </div>
+    <div class="rela-block profile-card-stats">
+      <div class="floated profile-stat email" id="num_works"><br />{{user.email}}<br /></div>
+      <div class="floated profile-stat rating" id="num_following"></div>
+      <div class="floated profile-stat phone" id="num_followers"><br />{{user.phone}}</div>
+    </div>
+  </div>
+</div>

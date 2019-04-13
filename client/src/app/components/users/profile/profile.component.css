@@ -1,0 +1,171 @@
+.rela-block {
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 25px;
+    /* top: ;
+    left: ;
+    right: ;
+    bottom: ; */
+  }
+  .rela-inline {
+    display: inline-block;
+    position: relative;
+    margin: auto;
+    /* top: ;
+    left: ;
+    right: ;
+    bottom: ; */
+  }
+
+  .floated {
+    display: inline-block;
+    position: relative;
+    margin: false;
+    /* top: ;
+    left: ;
+    right: ;
+    bottom: ; */
+    float: left;
+  }
+
+  .floated.right {
+    float: right;
+  }
+
+
+  .profile-card {
+    width: calc(100% - 40px);
+    padding-top: 100px;
+    margin: 70px auto 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.26);
+  }
+  .profile-pic {
+    margin-top: 30px;
+    display: false;
+    position: absolute;
+    margin: false;
+    top: -90px;
+    left: 50%;
+    right: false;
+    bottom: false;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    height: 180px;
+    width: 180px;
+    border: 10px solid #fff;
+    border-radius: 100%;
+    /* background: url("https://pbs.twimg.com/media/CdbiubzVIAANj8J.jpg") center no-repeat; */
+    background-size: cover;
+  }
+  .profile-name-container {
+    margin: 0 auto 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  .user-name {
+    font-family: "Montserrat";
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 12px;
+  }
+  .user-desc {
+    letter-spacing: 1px;
+    color: #999;
+  }
+  .profile-card-stats {
+    height: 75px;
+    padding: 10px 0px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .profile-stat {
+    height: 100%;
+    width: 33.3333%;
+  }
+  .profile-stat:before {
+    color: #999;
+  }
+  .email::before {
+    content: "email";
+  }
+  .phone::before {
+    content: "phone";
+  }
+
+  .rating {
+    margin-top: -16px;
+  }
+
+  .rating-number {
+    margin-left: 6px;
+    margin-right: 6px;
+    font-size: 24px;
+    /* color: #999 */
+  }
+
+  /* .upvote-icon {
+    margin-right: 10px;
+  } */
+
+  .rating::before {
+    content: "rating";
+  }
+  .image {
+    width: 240px;
+    height: 200px;
+    cursor: pointer;
+    margin: 0 20px 40px;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 10px solid #fff;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.26);
+    background-color: rgba(0,0,0,0.4);
+    background-size: cover !important;
+    -webkit-transition: 0.2s cubic-bezier(0.5, 0, 0.2, 1);
+    transition: 0.2s cubic-bezier(0.5, 0, 0.2, 1);
+  }
+  .image:hover {
+    -webkit-transform: scale(1.06);
+            transform: scale(1.06);
+    box-shadow: 0 2px 18px -2px rgba(0,0,0,0.3);
+  }
+
+  @media screen and (max-width: 550px) {
+    .overlay-card {
+      height: 500px;
+    }
+    .post-image {
+      width: 80%;
+      max-width: 288px;
+      height: 240px;
+    }
+    .overlay-desc {
+      padding: 14px;
+    }
+    .profile-card-stats {
+      height: 0;
+      padding: 0px;
+    }
+    .profile-pic {
+      height: 140px;
+      width: 140px;
+      top: -70px;
+    }
+    .profile-card {
+      padding-top: 70px;
+      margin: 50px auto 30px;
+    }
+  }
+
+  .edit-profile-btn {
+    float: right;
+    margin-left: 800px;
+    position: relative;
+    z-index: 2;
+    margin-right: 36px;
+    margin-top: -60px;
+  }

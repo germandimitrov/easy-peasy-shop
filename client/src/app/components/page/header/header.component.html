@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-md-5 mb-5">
+  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{'show': isShow }" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="!authService.isUserLogged()" class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li *ngIf="!authService.isUserLogged()" class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="authService.isUserLogged() && authService.isAdmin()" class="nav-item">
+        <a class="nav-link" routerLink="create">Create Product</a>
+      </li>
+    </ul>
+    <span *ngIf="authService.isUserLogged()" class="navbar-text">
+        <a class="nav-link" routerLink="cart"> <fa name="shopping-cart" size="1x"></fa> {{ orderedProductsCount }} </a>
+    </span>
+    <span *ngIf="authService.isUserLogged()" class="navbar-text">
+      <a class="nav-link" routerLink="profile">{{ authService.get('username') }}</a>
+    </span>
+    <span *ngIf="authService.isUserLogged()" class="navbar-text">
+        <a class="nav-link" href="#" (click)="logout()">Logout</a>
+    </span>
+  </div>
+</nav>

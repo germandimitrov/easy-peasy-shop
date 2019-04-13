@@ -1,0 +1,29 @@
+<form #f="ngForm" (ngSubmit)="handleSubmit()" >
+  <div class="p-3 p-lg-5 border">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+      name="email"
+      [(ngModel)]="model.email"
+      #email="ngModel"
+      required>
+    </div>
+    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+      Email is required.
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+      name="password"
+      [(ngModel)]="model.password"
+      #password="ngModel"
+      required>
+    </div>
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+      Password is required.
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

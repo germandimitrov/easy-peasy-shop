@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-1">
+        <div class="thumbnail">
+            <img class="img-responsive user-photo" src="{{comment.user.picture}}">
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>{{comment.user.username}}</strong> <span class="text-muted"> {{comment.createdAt | date:'medium'}}</span>
+            </div>
+            <div class="panel-body">
+              {{comment.content}}
+              <br />
+              <small *ngIf="stars" class="text-muted">{{stars}}</small>
+            </div>
+        </div>
+    </div>
+</div>

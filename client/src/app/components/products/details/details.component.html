@@ -1,0 +1,21 @@
+<div *ngIf="product" class="row align-items-center my-5">
+    <div class="col-lg-5">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src={{product.imageUrl}} alt="product" />
+    <!-- </div> -->
+    <div class="col-lg-5 details">
+        <h1 class="font-weight-light">{{product.title}}</h1>
+        <p>{{product.description}}</p>
+    </div>
+</div>
+
+<div *ngIf="product" class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>User Comment Example</h3>
+        </div>
+    </div>
+    <div *ngFor="let comment of product.comments">
+        <app-show-comment [comment]="comment"></app-show-comment>
+    </div>
+</div>
+<app-create-comment (newComment)="getNewComment($event)" *ngIf="product" [productId]="product.id"></app-create-comment>

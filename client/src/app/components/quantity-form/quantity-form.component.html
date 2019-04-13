@@ -1,0 +1,11 @@
+<form #qtyForm="ngForm">
+    <div class="form-group">
+        <input class="form-control" type="number" required pattern="\d+" name="quantity" [(ngModel)]="quantity" (blur)="onBlurMethod()" />
+    </div>
+    <span class="alert alert-danger" *ngIf="qtyForm.controls.quantity && qtyForm.controls.quantity.touched && qtyForm.controls.quantity.errors?.pattern">
+        Quantity should be number
+    </span>
+    <span class="alert alert-danger" *ngIf="qtyForm.controls.quantity && qtyForm.controls.quantity.touched && qtyForm.controls.quantity.errors?.required">
+        Quantity cannot be empty
+    </span>
+</form>

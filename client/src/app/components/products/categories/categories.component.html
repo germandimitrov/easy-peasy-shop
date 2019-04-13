@@ -1,0 +1,11 @@
+<div *ngIf="categories" class="border p-4 rounded mb-4">
+    <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+    <ul class="list-unstyled mb-0">
+        <li>
+            <a routerLink="" class="d-flex"><span>All</span> <span class="text-black ml-auto"></span></a>
+        </li>
+        <li *ngFor="let category of categories" class="mb-1">
+            <a routerLink="" [queryParams]="{filter: category.name }" class="d-flex"><span>{{category.name | titlecase }}</span> <span class="text-black ml-auto"></span></a>
+        </li>
+    </ul>
+</div>
