@@ -9,13 +9,19 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { CategoryCreateComponent } from './components/category-create/category-create.component';
 
-import { CategoryService } from '../services/category.service';
-import { ProductsService } from '../services/products.service';
-import { AddHeaderInterceptor } from '../interceptors/AddHeaderInterceptor';
+import { CategoryService } from '../core/services/category.service';
+import { ProductsService } from '../core/services/products.service';
+import { AddHeaderInterceptor } from '../core/interceptors/AddHeaderInterceptor';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { OrdersAdminComponent } from './components/orders-admin/orders-admin.component';
 
 @NgModule({
-  declarations: [ProductCreateComponent, CategoryCreateComponent, EditProductComponent],
+  declarations: [
+    ProductCreateComponent,
+    CategoryCreateComponent,
+    EditProductComponent,
+    OrdersAdminComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -35,7 +41,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 
   ],
   exports: [
-    ProductCreateComponent
+    ProductCreateComponent,
+    OrdersAdminComponent
   ]
 })
 export class AdminModule { }

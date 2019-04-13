@@ -1,6 +1,6 @@
 import {Entity, BaseEntity, JoinTable, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import { Category } from "./Category";
-import { OrdersProducts } from "./OrdersProducts";
+import { OrderDetails } from "./OrderDetails";
 import { Comment } from './Comment';
 
 
@@ -26,8 +26,8 @@ export class Product extends BaseEntity {
   categories: Category[]
 
 
-  @OneToMany(type => OrdersProducts, ordersProducts => ordersProducts.product)
-  ordersProducts: OrdersProducts
+  @OneToMany(type => OrderDetails, ordersProducts => ordersProducts.product)
+  orderDetails: OrderDetails[]
 
   @OneToMany(type => Comment, comments => comments.product)
   comments: Comment[]

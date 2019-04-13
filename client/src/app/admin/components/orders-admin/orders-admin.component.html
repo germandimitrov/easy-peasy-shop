@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">By User</th>
+        <th scope="col">Address</th>
+        <th scope="col">Product x Quantity </th>
+        <th scope="col">Process</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of (orders$ | async)">
+        <th scope="row">1</th>
+        <td>{{order.user.email}}</td>
+        <td>{{order.user.address}}</td>
+        <td>
+          <ul *ngFor="let orderLine of order.orderDetails">
+            <li>{{orderLine.product.title}} x {{orderLine.orderedQuantity}}</li>
+          </ul>
+        </td>
+        <td *ngIf="order.status == orderStatus[orderStatus.Unprocessed] else other_content">
+          <button class="btn btn-primary" (click)="processOrder(order.id)"> Process Order </button>
+        </td>
+        <ng-template #other_content> <td> Processed </td> </ng-template>
+      </tr>
+    </tbody>
+  </table>

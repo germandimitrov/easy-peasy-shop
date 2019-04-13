@@ -15,7 +15,10 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li *ngIf="authService.isUserLogged() && authService.isAdmin()" class="nav-item">
-        <a class="nav-link" routerLink="create">Create Product</a>
+        <a class="nav-link" routerLink="admin/create">Create Product</a>
+      </li>
+      <li *ngIf="authService.isUserLogged() && authService.isAdmin()" class="nav-item">
+        <a class="nav-link" routerLink="admin/orders">Orders</a>
       </li>
     </ul>
     <span *ngIf="authService.isUserLogged()" class="navbar-text">

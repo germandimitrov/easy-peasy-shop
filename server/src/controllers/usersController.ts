@@ -150,8 +150,25 @@ class usersController {
       next(error);
     }
   }
+  async getUserOrders(req: Request, res: Response, next: NextFunction) {
+    try {
+      let user = await getRepository(User).findOne({
+        where: {
+          id: req.params.id
+        },
+        relations: [
+          'orders'
+        ]
+      });
+      return res.status(200).json(user.orders);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   generateSessionJWT(user: User) {
+    delete user.password;
+    delete user.salt;
     return sign({ user: user }, settings.secretKey, {
       expiresIn: '1h'
     });

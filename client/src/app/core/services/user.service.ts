@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable} from 'rxjs';
-import IProduct from '../interfaces/IProduct';
-import IUser from '../interfaces/IUser';
 import { AuthService } from './auth.service';
+import IUser from '../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +19,10 @@ export class UserService {
     const userId = this.authService.get('id');
     return this.http.get<IUser>(this.apiUrl + 'users/' + userId);
   }
+
+  getOrderByUserId(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl + 'users/' + userId + '/orders');
+  }
+
 
 }

@@ -37,6 +37,11 @@ export default (app: any) => {
     usersController.getProfile
   );
 
+  app.get('/users/:id/orders',
+    jwtAuth,
+    usersController.getUserOrders
+  );
+
   app.put('/users/:id',
     jwtAuth,
     validationCheck.updateUser,
@@ -92,12 +97,24 @@ export default (app: any) => {
     commentsController.get
   );
 
+  app.get('/orders',
+    jwtAuth,
+    ordersController.get
+  );
+
   // orders
   app.post('/orders',
     jwtAuth,
-    validationCheck.order,
-    validate,
+    // validationCheck.order,
+    // validate,
     ordersController.create
+  );
+
+  app.put('/orders/:id/status',
+    jwtAuth,
+    // validationCheck.status,
+    // validate,
+    ordersController.updateStatus
   );
 
 };

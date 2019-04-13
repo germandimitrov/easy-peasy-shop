@@ -2,9 +2,9 @@ import { Entity, PrimaryGeneratedColumn, BaseEntity, Column,  ManyToOne, CreateD
 import { Product } from "./Product";
 import { Order } from "./Order";
 
-@Entity({ name: 'orders_products' })
+@Entity({ name: 'orders_details' })
 
-export class OrdersProducts extends BaseEntity {
+export class OrderDetails extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,9 +12,9 @@ export class OrdersProducts extends BaseEntity {
   @Column({ default: null })
   orderedQuantity: number;
 
-  @ManyToOne(type => Product, product => product.ordersProducts, )
+  @ManyToOne(type => Product, product => product.orderDetails)
   product: Product;
 
-  @ManyToOne(type => Order, order => order.ordersProducts)
+  @ManyToOne(type => Order, order => order.orderDetails)
   order: Order;
 }

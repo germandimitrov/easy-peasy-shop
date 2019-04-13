@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
-import { CommentService } from 'src/app/services/comment.service';
-import IComment from 'src/app/interfaces/IComment';
+import { CommentService } from 'src/app/core/services/comment.service';
+import IComment from 'src/app/core/interfaces/IComment';
 import { NgForm } from '@angular/forms';
-
+import {NgbRating} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-comment',

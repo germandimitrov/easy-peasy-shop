@@ -4,12 +4,12 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/users/profile/profile.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart/shopping-cart.component';
 import { DetailsComponent } from './components/products/details/details.component';
 
 const routes: Routes = [
   {
-    path: 'create',
+  path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   },
   { path: 'register', component: RegisterComponent },

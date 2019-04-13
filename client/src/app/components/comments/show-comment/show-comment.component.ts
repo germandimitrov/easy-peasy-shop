@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import IComment from 'src/app/interfaces/IComment';
+import IComment from 'src/app/core/interfaces/IComment';
 
 @Component({
   selector: 'app-show-comment',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
-import ICategory from 'src/app/interfaces/ICategory';
+import { ProductsService } from 'src/app/core/services/products.service';
+import ICategory from 'src/app/core/interfaces/ICategory';
 
 @Component({
   selector: 'app-categories',

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnChanges, SimpleChanges, DoCheck, NgZone, Input, Output, ViewChild } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
-import IProduct from 'src/app/interfaces/IProduct';
-import { CategoryService } from 'src/app/services/category.service';
+import { ProductsService } from 'src/app/core/services/products.service';
+import IProduct from 'src/app/core/interfaces/IProduct';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import ICategory from 'src/app/interfaces/ICategory';
+import ICategory from 'src/app/core/interfaces/ICategory';
 
 
 @Component({
@@ -54,7 +54,6 @@ export class ProductCreateComponent implements OnInit {
   displayNewCategory(category: ICategory) {
     this.dropdownList.push(category);
   }
-
 
   // onItemSelect(category: any) {
   //   this.model.categories.push(category);

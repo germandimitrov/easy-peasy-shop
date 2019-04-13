@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CategoryService } from 'src/app/services/category.service';
-import ICategory from 'src/app/interfaces/ICategory';
+import { CategoryService } from 'src/app/core/services/category.service';
+import ICategory from 'src/app/core/interfaces/ICategory';
 
 @Component({
   selector: 'app-category-create',
