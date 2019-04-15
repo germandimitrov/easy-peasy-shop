@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCommentComponent } from './create-comment/create-comment.component';
 import { ShowCommentComponent } from './show-comment/show-comment.component';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ShowCommentComponent } from './show-comment/show-comment.component';
     NgbRating,
     CreateCommentComponent,
     ShowCommentComponent,
+    TimeAgoPipe
   ],
   imports: [
     CommonModule,

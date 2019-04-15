@@ -10,7 +10,9 @@ export class Category extends BaseEntity {
   @Column({type: 'varchar', default: null})
   name: string
 
-  @ManyToMany(type => Product, product =>  product.categories)
+  @ManyToMany(type => Product, product =>  product.categories, {
+    onDelete: "CASCADE"
+  })
   products: Product[]
 
   @CreateDateColumn()

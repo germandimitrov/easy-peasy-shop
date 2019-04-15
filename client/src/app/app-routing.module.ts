@@ -9,16 +9,16 @@ import { DetailsComponent } from './components/products/details/details.componen
 
 const routes: Routes = [
   {
-  path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+    path: 'admin',
+      loadChildren: './components/admin/admin.module#AdminModule'
   },
+  { path: '' , pathMatch: 'full', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login' , component: LoginComponent },
   { path: 'profile' , component: ProfileComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'product/details/:id', component: DetailsComponent },
-  { path: '' , pathMatch: 'full', component: HomeComponent },
 ];
 
 @NgModule({

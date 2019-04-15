@@ -10,12 +10,14 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ProfileComponent } from './components/users/profile/profile.component';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './components/shared/shared.module';
 import { ProductsModule } from './components/products/products.module';
 import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.module';
+import { UsersModule } from './components/users/users.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,7 +26,6 @@ import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.mod
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,9 @@ import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.mod
     SharedModule,
     ProductsModule,
     ShoppingCartModule,
+    UsersModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
   ],

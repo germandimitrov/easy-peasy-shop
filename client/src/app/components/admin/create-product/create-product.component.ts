@@ -7,11 +7,11 @@ import ICategory from 'src/app/core/interfaces/ICategory';
 
 
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  selector: 'app-create-product',
+  templateUrl: './create-product.component.html',
+  styleUrls: ['./create-product.component.css']
 })
-export class ProductCreateComponent implements OnInit {
+export class CreateProductComponent implements OnInit {
 
   product: IProduct;
   dropdownList: any;
@@ -33,6 +33,7 @@ export class ProductCreateComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(2)]],
       imageUrl: ['', Validators.required],
+      categories: ['', Validators.required],
       price: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]], // isNumber pattern
       description: ['', [Validators.required, Validators.minLength(3)]],
     });

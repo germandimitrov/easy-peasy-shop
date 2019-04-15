@@ -76,9 +76,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   checkout() {
-    this.orderServiceSubscription = this.orderService.create(this.products).subscribe();
-    this.shoppingCartService.emptyCart();
-    this.products = [];
+    if (this.products.length) {
+      this.orderServiceSubscription = this.orderService.create(this.products).subscribe();
+      this.shoppingCartService.emptyCart();
+      this.products = [];
+    }
   }
 
   ngOnDestroy() {

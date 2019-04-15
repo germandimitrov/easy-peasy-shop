@@ -4,7 +4,7 @@
     </div>
     <div class="col-lg-5 details">
         <h1 class="font-weight-light">{{product.title}}</h1>
-        <p>{{product.description}}</p>
+        <h4>{{product.description}}</h4>
     </div>
 </div>
 
@@ -17,5 +17,6 @@
     <div *ngFor="let comment of product.comments">
         <app-show-comment [comment]="comment"></app-show-comment>
     </div>
+    <br>
+    <app-create-comment (newComment)="getNewComment($event)" *ngIf="product" [productId]="product.id"></app-create-comment>
 </div>
-<app-create-comment (newComment)="getNewComment($event)" *ngIf="product" [productId]="product.id"></app-create-comment>

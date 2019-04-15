@@ -26,7 +26,7 @@ const validate = {
     check('price', 'Price should be a number.').trim().isNumeric(),
   ],
   category: [
-    check('name', 'Category cannot be empty').trim().isLength({ min: 1 }),
+    check('category', 'Category cannot be empty').trim().isLength({ min: 1 }),
   ],
   comment: [
     check('content', 'Content cannot be empty').trim().isLength({ min: 1 }),

@@ -12,7 +12,9 @@ export class OrderDetails extends BaseEntity {
   @Column({ default: null })
   orderedQuantity: number;
 
-  @ManyToOne(type => Product, product => product.orderDetails)
+  @ManyToOne(type => Product, product => product.orderDetails, {
+    onDelete: "CASCADE"
+  })
   product: Product;
 
   @ManyToOne(type => Order, order => order.orderDetails)

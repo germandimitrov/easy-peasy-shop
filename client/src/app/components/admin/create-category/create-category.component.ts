@@ -2,24 +2,31 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CategoryService } from 'src/app/core/services/category.service';
 import ICategory from 'src/app/core/interfaces/ICategory';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-category-create',
-  templateUrl: './category-create.component.html',
-  styleUrls: ['./category-create.component.css']
+  selector: 'app-create-category',
+  templateUrl: './create-category.component.html',
+  styleUrls: ['./create-category.component.css']
 })
-export class CategoryCreateComponent implements OnInit {
+export class CreateCategoryComponent implements OnInit {
 
   model: ICategory;
   category: ICategory;
   @Output() newCategoryAdded = new EventEmitter();
 
-  constructor(private http: HttpClient, private categoryService: CategoryService) {
-    this.model = { name: '' };
-  }
+  constructor(private http: HttpClient, private categoryService: CategoryService) {}
 
   ngOnInit() {
 
+  }
+
+  handleSubmit(f: NgForm) {
+    this.categoryService.create(f.value).subscribe(response => {
+      console.log('category added!');
+      f.reset();
+      // TOASTR
+    });
   }
 
   onBlurMethod() {

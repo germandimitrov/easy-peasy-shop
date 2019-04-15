@@ -17,7 +17,9 @@ export class Comment extends BaseEntity {
   @Column({ default: null })
   rated: boolean
 
-  @ManyToOne(type => Product, product =>  product.comments)
+  @ManyToOne(type => Product, product =>  product.comments, {
+    onDelete: "CASCADE"
+  })
   product: Product
 
   @ManyToOne(type => User, user =>  user.comments)

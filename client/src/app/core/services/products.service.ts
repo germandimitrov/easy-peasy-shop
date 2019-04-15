@@ -33,6 +33,14 @@ export class ProductsService {
     return this.http.get<IProduct>(this.apiUrl + 'products/' + id);
   }
 
+  getProductWithCategories(id: number): Observable<IProduct> {
+    return this.http.get<IProduct>(this.apiUrl + 'products/' + id + '/categories');
+  }
+
+  editProduct(productData: IProduct, id: number): Observable<IProduct> {
+    return this.http.put<IProduct>(this.apiUrl + 'products/' + id, productData);
+  }
+
   getShoppingCartProducts(ids: Array<number>): Observable<IProduct[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('ids', ids.join(', '));
@@ -41,6 +49,10 @@ export class ProductsService {
 
   getCategories(): Observable<ICategory[]> {
     return this.http.get<ICategory[]>(this.apiUrl + 'categories');
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete(this.apiUrl + 'products/' + id);
   }
 
 

@@ -73,6 +73,23 @@ export default (app: any) => {
     productsController.create
   );
 
+  app.put('/products/:id',
+    jwtAuth,
+    validationCheck.product,
+    validate,
+    productsController.edit
+  );
+
+  app.delete('/products/:id',
+    jwtAuth,
+    productsController.delete
+  );
+
+  app.get('/products/:id/categories',
+    jwtAuth,
+    productsController.getProductWithCategories
+  );
+
   app.get('/categories',
     jwtAuth,
     categoriesController.get

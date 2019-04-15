@@ -9,13 +9,29 @@ class productsController {
     try {
       const query = getRepository(Product)
         .createQueryBuilder('products')
-        .leftJoinAndSelect('products.categories', 'categories');
+        .leftJoinAndSelect('products.categories', 'categories')
+        // .leftJoinAndSelect('products.comments', 'comments');
 
       if (req.query.filter) {
         let { filter } = req.query;
         query.where('categories.name = :name', { name: filter })
       }
-      const products = await query.getMany();
+      let products = await query.getMany();
+
+      // let products = productsData.map(p => {
+      //   let ratingSum = 0;
+      //   let ratedTimes = 0;
+      //   p.comments.forEach((c) => {
+      //     if (c.rated && c.rating) {
+      //       ratedTimes++;
+      //       ratingSum += c.rating;
+      //     }
+      //   });
+      //   return {
+      //     ...p,
+      //     ratingSum: ratingSum /ratedTimes
+      //   }
+      // });
       return res.status(200).json(products);
     } catch (error) {
       console.log(error);
@@ -63,6 +79,48 @@ class productsController {
         relations: ['comments', 'comments.user']
       });
       return res.status(200).json(product);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getProductWithCategories(req: Request, res: Response, next: NextFunction) {
+    try {
+      const product = await getRepository(Product).findOne({
+        where: {id: req.params.id},
+        relations: ['categories']
+      });
+      return res.status(200).json(product);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async edit(req: Request, res: Response, next: NextFunction) {
+    try {
+      let product = await getRepository(Product).findOne({
+        where: {id: req.params.id},
+        relations: ['categories']
+      });
+      product.title = req.body.title;
+      product.description = req.body.description;
+      product.imageUrl = req.body.imageUrl;
+      product.price = req.body.price;
+      product.categories = req.body.categories;
+      await getRepository(Product).save(product);
+
+      return res.status(200).json(product);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async delete(req: Request, res: Response, next: NextFunction) {
+    try {
+      let product = await getRepository(Product).findOne(req.params.id);
+      let test = await product.remove();
+      console.log(test);
+      return res.status(200).json({'message': 'product has been deleted!'});
     } catch (error) {
       console.log(error);
     }

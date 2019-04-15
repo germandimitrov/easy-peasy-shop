@@ -16,6 +16,7 @@ export class ShoppingCartService {
 
   addToCart(productId: number): void {
     this.orderedProducts.push(productId);
+    this.orderedProducts = Array.from(new Set(this.orderedProducts));
     this._updateLocalStorage();
     this.dataSource.next(this.orderedProducts);
   }

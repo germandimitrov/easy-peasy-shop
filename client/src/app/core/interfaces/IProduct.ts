@@ -9,4 +9,5 @@ export default interface IProduct {
   totalPrice?: number;
   orderedQuantity?: number;
   comments?: Array<IComment>;
+  categories?: Array<any>
 }

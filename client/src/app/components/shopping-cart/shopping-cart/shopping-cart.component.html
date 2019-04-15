@@ -1,5 +1,5 @@
 <div class="container mb-4">
-    <div class="row">
+    <div  *ngIf="products" class="row">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -13,7 +13,7 @@
                             <th> </th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="products">
+                    <tbody>
                         <tr *ngFor="let product of products">
                             <td><img src="{{product.imageUrl}}" width="75" height="75"/> </td>
                             <td>{{product.title}}</td>
@@ -40,11 +40,11 @@
         </div>
         <div class="col mb-2">
             <div class="row">
-                <div class="col-sm-12  col-md-6">
-                    <a routerLink="/"> <button class="btn btn-block btn-light">Continue Shopping</button> </a>
+                <div class="col-sm-12 col-md-6">
+                    <a routerLink="/" class="btn-continue-link"> <button class="btn btn-block btn-light btn-continue">Continue Shopping</button> </a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase" (click)="checkout()">Checkout</button>
+                    <button class="btn btn-lg btn-block btn-primary text-uppercase" (click)="checkout()">Checkout</button>
                 </div>
             </div>
         </div>

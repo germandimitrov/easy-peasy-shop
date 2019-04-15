@@ -13,15 +13,18 @@ export class UserService {
   user: IUser;
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
-
-  get(): Observable<IUser> {
-    const userId = this.authService.get('id');
-    return this.http.get<IUser>(this.apiUrl + 'users/' + userId);
+  constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-  getOrderByUserId(userId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + 'users/' + userId + '/orders');
+  get(): Observable<IUser> {
+    const id = Number(this.authService.get('id'));
+
+    return this.http.get<IUser>(this.apiUrl + 'users/' + id);
+  }
+
+  getUserOrders(): Observable<any[]> {
+    const id = Number(this.authService.get('id'));
+    return this.http.get<any[]>(this.apiUrl + 'users/' + id + '/orders');
   }
 
 

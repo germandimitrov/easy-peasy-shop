@@ -17,14 +17,17 @@ class CategoriesControllery {
     let category = new Category();
     try {
       category = await getRepository(Category).findOne({
-        name: Like(`%${req.body.name}%`)
+        name: Like(`%${req.body.category}%`)
       });
 
       if (!category) {
-        category = req.body;
+        category = <Category>{name: req.body.category};
         category = await getRepository(Category).save(category);
+        return res.status(201).json(category);
       }
-      return res.status(201).json(category);
+      else {
+        return res.status(422).json({'error': category.name + ' already exists!'});
+      }
     } catch (error) {
       console.log(error);
     }

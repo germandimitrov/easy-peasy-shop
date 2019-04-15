@@ -157,7 +157,9 @@ class usersController {
           id: req.params.id
         },
         relations: [
-          'orders'
+          'orders',
+          'orders.orderDetails',
+          'orders.orderDetails.product'
         ]
       });
       return res.status(200).json(user.orders);
@@ -170,7 +172,7 @@ class usersController {
     delete user.password;
     delete user.salt;
     return sign({ user: user }, settings.secretKey, {
-      expiresIn: '1h'
+      expiresIn: '5s'
     });
   }
 

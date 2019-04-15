@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of (products$ | async)">
+        <td>
+          {{product.id}}
+        </td>
+        <td><img src="{{product.imageUrl}}" width="50" height="50">&nbsp;{{product.title}}</td>
+        <td>
+          <a routerLink="{{product.id}}/edit"> <button class="btn btn-light"> Edit </button> </a>
+          &nbsp;
+          <button class="btn btn-danger" (click)="deleteProduct(product.id)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

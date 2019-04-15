@@ -1,4 +1,3 @@
-<app-category-create (newCategoryAdded)="displayNewCategory($event)" ></app-category-create>
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <div class="form-group">
     <label for="exampleFormControlInput1">Title</label>
@@ -27,22 +26,21 @@
       Price must be a number.
     </div>
   </div>
-
-  <!-- <ng-multiselect-dropdown
+  <div class="form-group">
+      <label for="exampleFormControlInput1">Categories</label>
+  </div>
+  <ng-multiselect-dropdown
     [placeholder]="'custom placeholder'"
     [data]="dropdownList"
     [(ngModel)]="categories"
     [settings]="dropdownSettings"
-    (onSelect)="onItemSelect($event)"
-    name="categories"
+    formControlName="categories"
+    [ngClass]="multiselect-dropdown"
   >
-  </ng-multiselect-dropdown> -->
-
+  </ng-multiselect-dropdown>
+  <br>
   <div class="form-group">
-      <label for="exampleFormControlInput1">Price</label>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <label for="exampleFormControlTextarea1">Description</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="description"></textarea>
   </div>
   <div *ngIf="f.description.errors?.required && f.description.touched" class="alert alert-danger">
@@ -52,6 +50,8 @@
       Length must be at least {{f.description.errors.minlength.requiredLength}} chars!
   </div>
   <div>
-    <button type="submit" class="btn btn-primary" [disabled]="invalid" >Create</button>
+    <button type="submit" class="btn btn-primary"
+    [disabled]="invalid"
+    >Create</button>
   </div>
 </form>

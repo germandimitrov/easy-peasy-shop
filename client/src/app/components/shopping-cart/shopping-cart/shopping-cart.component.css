@@ -58,3 +58,11 @@ footer {
 footer a {
     color: #f8f9fa!important
 }
+
+.btn-continue-link {
+    text-decoration: none;
+}
+.btn-continue {
+	padding-bottom: 7.5px;
+	line-height: 2;
+}

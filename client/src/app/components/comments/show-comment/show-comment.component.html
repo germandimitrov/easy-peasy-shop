@@ -1,18 +1,23 @@
-<div class="row">
-    <div class="col-sm-1">
-        <div class="thumbnail">
-            <img class="img-responsive user-photo" src="{{comment.user.picture}}">
-        </div>
-    </div>
-    <div class="col-sm-10">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>{{comment.user.username}}</strong> <span class="text-muted"> {{comment.createdAt | date:'medium'}}</span>
+ <br>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{comment.user.username}}</strong></a>
+                <img src="{{comment.user.picture}}" class="img img-rounded img-fluid"/>
             </div>
-            <div class="panel-body">
-              {{comment.content}}
-              <br />
-              <small *ngIf="stars" class="text-muted">{{stars}}</small>
+            <div class="col-md-8">
+                <p>
+                    <!-- <span class="float-right"><i class="text-warning fa fa-star"></i></span> -->
+                    <small *ngIf="stars" class="text-muted">{{stars}}</small>
+                </p>
+                <div class="clearfix"></div>
+                <p>{{comment.content}}</p>
+                <p class="text-secondary">{{comment.createdAt | timeAgo}}</p>
+                <!-- <p>
+                    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                </p> -->
             </div>
         </div>
     </div>

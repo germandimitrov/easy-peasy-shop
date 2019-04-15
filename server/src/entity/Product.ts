@@ -25,7 +25,6 @@ export class Product extends BaseEntity {
   @ManyToMany(type => Category, category =>  category.products)
   categories: Category[]
 
-
   @OneToMany(type => OrderDetails, ordersProducts => ordersProducts.product)
   orderDetails: OrderDetails[]
 
