@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable} from 'rxjs';
 import { AuthService } from './auth.service';
 import IUser from '../interfaces/IUser';
+import IOrder from '../interfaces/IOrder';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,9 @@ export class UserService {
     return this.http.get<IUser>(this.apiUrl + 'users/' + id);
   }
 
-  getUserOrders(): Observable<any[]> {
+  getUserOrders(): Observable<IOrder[]> {
     const id = Number(this.authService.get('id'));
-    return this.http.get<any[]>(this.apiUrl + 'users/' + id + '/orders');
+    return this.http.get<IOrder[]>(this.apiUrl + 'users/' + id + '/orders');
   }
 
 

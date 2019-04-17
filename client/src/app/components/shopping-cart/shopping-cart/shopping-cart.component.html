@@ -1,5 +1,5 @@
 <div class="container mb-4">
-    <div  *ngIf="products" class="row">
+    <div *ngIf="products else empty" class="row">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -49,4 +49,5 @@
             </div>
         </div>
     </div>
+    <ng-template #empty> <h2 class="text-center"> Your shopping cart is empty </h2> </ng-template>
 </div>

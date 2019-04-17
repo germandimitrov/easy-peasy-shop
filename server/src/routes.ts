@@ -90,6 +90,7 @@ export default (app: any) => {
     productsController.getProductWithCategories
   );
 
+  // categories
   app.get('/categories',
     jwtAuth,
     categoriesController.get
@@ -102,6 +103,7 @@ export default (app: any) => {
     categoriesController.create
   );
 
+  // comments
   app.post('/products/:id/comments',
     jwtAuth,
     validationCheck.comment,
@@ -114,23 +116,23 @@ export default (app: any) => {
     commentsController.get
   );
 
+  // orders
   app.get('/orders',
     jwtAuth,
     ordersController.get
   );
 
-  // orders
   app.post('/orders',
     jwtAuth,
-    // validationCheck.order,
-    // validate,
+    validationCheck.order,
+    validate,
     ordersController.create
   );
 
   app.put('/orders/:id/status',
     jwtAuth,
-    // validationCheck.status,
-    // validate,
+    validationCheck.orderStatus,
+    validate,
     ordersController.updateStatus
   );
 

@@ -1,9 +1,10 @@
-import { Component, OnInit, OnChanges, SimpleChanges, DoCheck, NgZone, Input, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, DoCheck, NgZone, Input, Output, ViewChild, OnDestroy } from '@angular/core';
 import { ProductsService } from 'src/app/core/services/products.service';
 import IProduct from 'src/app/core/interfaces/IProduct';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import ICategory from 'src/app/core/interfaces/ICategory';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,8 +12,10 @@ import ICategory from 'src/app/core/interfaces/ICategory';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class CreateProductComponent implements OnInit, OnDestroy {
 
+  productSubscription: Subscription;
+  categorySubscription: Subscription;
   product: IProduct;
   dropdownList: any;
   // @ViewChild('f') htmlFrom: NgForm;
@@ -40,7 +43,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.get().pipe(
+    this.categorySubscription = this.categoryService.get().pipe(
       // map((res: any) => res.map((i: ICategory) => ( {item_id: i.id, item_text: i.name } )))
       // map((res: any) => res.map((i: ICategory) => ( {id: i.id, itemName: i.name } )))
     ).subscribe(res => {
@@ -61,7 +64,7 @@ export class CreateProductComponent implements OnInit {
   // }
 
   handleSubmit() {
-    this.productService.create(this.form.value).subscribe(response => {
+    this.productSubscription = this.productService.create(this.form.value).subscribe(response => {
       this.product = response;
       // this.model.categories = [];
       this.form.reset();
@@ -70,6 +73,16 @@ export class CreateProductComponent implements OnInit {
 
   get invalid() {
     return this.form.invalid;
+  }
+
+  ngOnDestroy() {
+    if (this.productSubscription) {
+      this.productSubscription.unsubscribe();
+    }
+
+    if (this.categorySubscription) {
+      this.categorySubscription.unsubscribe();
+    }
   }
 
 }

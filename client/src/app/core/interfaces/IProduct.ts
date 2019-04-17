@@ -1,4 +1,5 @@
 import IComment from './IComment';
+import ICategory from './ICategory';
 
 export default interface IProduct {
   id?: number;
@@ -9,5 +10,5 @@ export default interface IProduct {
   totalPrice?: number;
   orderedQuantity?: number;
   comments?: Array<IComment>;
-  categories?: Array<any>
+  categories?: Array<ICategory>
 }

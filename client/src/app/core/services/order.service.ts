@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import IProduct from '../interfaces/IProduct';
 import { Observable } from 'rxjs';
+import IOrder from '../interfaces/IOrder';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class OrderService {
 
   }
 
-  get(): Observable<any[]> {
+  get(): Observable<IOrder[]> {
     return this.http.get<any[]>(this.apiUrl + 'orders');
   }
 

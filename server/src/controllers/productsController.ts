@@ -109,7 +109,7 @@ class productsController {
       product.categories = req.body.categories;
       await getRepository(Product).save(product);
 
-      return res.status(200).json(product);
+      return res.status(204).json(product);
     } catch (error) {
       console.log(error);
     }

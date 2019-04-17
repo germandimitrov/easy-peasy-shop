@@ -26,16 +26,32 @@ export class NotificationInterceptor implements HttpInterceptor {
       tap((success: any) => {
         if (this.api + 'login' === success.url) {
           setTimeout(() => {
-            this.toastr.success('Success');
+            this.toastr.success('Hello there!');
           });
-        } else if (this.api + 'products' === success.url && success.status === 201) {
+        }
+        else if (this.api + 'register' === success.url) {
           setTimeout(() => {
-            this.toastr.success('Product created!');
+            this.toastr.success('Welcome!');
           });
-        } else if (this.api + 'categories' === success.url && success.status === 201) {
+        }
+        else if (this.api + 'products' === success.url && success.status === 201) {
+          this.toastr.success('Product created!');
+        }
+        else if (this.api + 'categories' === success.url && success.status === 201) {
           this.toastr.success('New Category Added!');
         }
-        console.log(success);
+        else if (this.api + 'orders' === success.url && success.status === 200 && this.router.url.endsWith('cart')) {
+          this.toastr.success('Your Order has been created!');
+        }
+        else if (success.url && success.url.endsWith('comments') && success.status === 200 && this.router.url.includes('product')) {
+          this.toastr.success('Your comment has been added!');
+        }
+        else if (success.url && success.url.includes('products') && success.status === 204 && this.router.url.includes('edit')) {
+          this.toastr.success('Product has been updated!');
+        }
+        else if (success.url && success.url.includes('orders') && success.url.endsWith('status')) {
+          this.toastr.success('Order has been proceed!');
+        }
       }),
       catchError((error: any) => {
         if (error.status === 401) {

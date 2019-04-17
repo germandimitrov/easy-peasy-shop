@@ -26,3 +26,17 @@
 	border-right-color:#ddd;
 	border-width:8px;
 } */
+.posted-on {
+    font-size: 12px;
+    /* padding-top: 50px; */
+}
+
+.comment-content {
+    font-size: 19px;
+}
+
+
+.stars {
+    /* font-size: 34px; */
+    color:#007bff;
+}

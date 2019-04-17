@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-     this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
+    this.shoppingCartSubscription = this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
       this.orderedProductsCount = orderedProducts.length;
     });
   }
@@ -37,7 +37,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.shoppingCartSubscription.unsubscribe();
+    if (this.shoppingCartSubscription) {
+      this.shoppingCartSubscription.unsubscribe();
+    }
   }
 
 }

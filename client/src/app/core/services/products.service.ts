@@ -38,6 +38,7 @@ export class ProductsService {
   }
 
   editProduct(productData: IProduct, id: number): Observable<IProduct> {
+    productData.price = Number(productData.price);
     return this.http.put<IProduct>(this.apiUrl + 'products/' + id, productData);
   }
 

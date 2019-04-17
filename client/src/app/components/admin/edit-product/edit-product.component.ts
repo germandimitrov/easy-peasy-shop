@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products.service';
 import IProduct from 'src/app/core/interfaces/IProduct';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-product',
@@ -11,7 +12,10 @@ import { CategoryService } from 'src/app/core/services/category.service';
   styleUrls: ['./edit-product.component.css']
 })
 
-export class EditProductComponent implements OnInit {
+export class EditProductComponent implements OnInit, OnDestroy {
+
+  productSubscription: Subscription;
+  categorySubscription: Subscription;
   form: FormGroup;
   product: IProduct;
   dropdownList: any;
@@ -38,7 +42,7 @@ export class EditProductComponent implements OnInit {
       title: ['', [Validators.required, Validators.minLength(2)]],
       imageUrl: ['', Validators.required],
       categories: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]], // isNumber pattern
+      price: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]], // isNumber pattern
       description: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
@@ -46,7 +50,7 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.productService.getProductWithCategories(this.id).subscribe(product => {
+      this.productSubscription = this.productService.getProductWithCategories(this.id).subscribe(product => {
         this.product = product;
         this.form.setValue({
           title: this.product.title,
@@ -56,8 +60,8 @@ export class EditProductComponent implements OnInit {
           description: this.product.description,
         });
       });
-
-      this.categoryService.get().pipe(
+      // check
+      this.categorySubscription = this.categoryService.get().pipe(
       ).subscribe(res => {
         this.dropdownList = res;
       });
@@ -66,13 +70,24 @@ export class EditProductComponent implements OnInit {
   }
 
   handleSubmit(f: NgForm) {
-    this.productService.editProduct(this.form.value, this.id).subscribe(response => {
+    this.productSubscription = this.productService.editProduct(this.form.value, this.id).subscribe(response => {
       this.product = response;
     });
   }
 
   get f() {
     return this.form.controls;
+  }
+
+  ngOnDestroy() {
+    if (this.productSubscription) {
+      this.productSubscription.unsubscribe();
+    }
+    if (this.categorySubscription) {
+      this.categorySubscription.unsubscribe();
+    }
+
+    // if (this.)
   }
 
 }

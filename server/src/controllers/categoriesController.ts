@@ -17,7 +17,7 @@ class CategoriesControllery {
     let category = new Category();
     try {
       category = await getRepository(Category).findOne({
-        name: Like(`%${req.body.category}%`)
+        name: req.body.category
       });
 
       if (!category) {
@@ -26,7 +26,9 @@ class CategoriesControllery {
         return res.status(201).json(category);
       }
       else {
-        return res.status(422).json({'error': category.name + ' already exists!'});
+        return res.status(422).json({
+          errors: [{ msg: category.name + ' already exists' }]
+        });
       }
     } catch (error) {
       console.log(error);

@@ -1,20 +1,24 @@
 <form #f="ngForm" (ngSubmit)="handleSubmit(f)" >
   <div class="col-md-12 p-3 p-lg-5 border">
     <div class="form-group">
-      <label for="exampleInputEmail1">Content</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your comment"
-        name="comment"
-        ngModel
-        minlength="1"
-      >
+      <!-- <label for="exampleInputEmail1">Content</label> -->
+        <div class="form-group">
+            <label for="replyFormComment"><h4> Your comment </h4> </label>
+            <textarea class="form-control" id="replyFormComment" rows="4"
+                name="comment"
+                ngModel
+                minlength="1"
+            >
+            </textarea>
+        </div>
     </div>
     <div *ngIf="f.controls.comment?.touched && f.value.comment === ''" class="alert alert-danger">
       Comment cannot by empty
     </div>
 
-    <ngb-rating [(rate)]="rating"></ngb-rating>
+    <ngb-rating class="stars" [(rate)]="rating"></ngb-rating>
       <hr>
-    <pre *ngIf="rating">Rate: <b>{{rating}}</b></pre>
+    <pre *ngIf="rating">Rate: <span class="stars" >{{rating}}</span></pre>
 
   <div>
       <button type="submit" class="btn btn-primary">Submit</button>

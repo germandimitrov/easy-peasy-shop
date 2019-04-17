@@ -4,18 +4,21 @@
     </div>
     <div class="col-lg-5 details">
         <h1 class="font-weight-light">{{product.title}}</h1>
-        <h4>{{product.description}}</h4>
+        <p>{{product.description}}</p>
+        <h5>{{product.price}}</h5>
+        <br>
+        <button (click)="handleOrder(product.id)" class="pull-left btn btn-primary">Buy Me</button>
     </div>
 </div>
 
 <div *ngIf="product" class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h3>User Comment Example</h3>
+            <!-- <h3>User Comment Example</h3> -->
         </div>
     </div>
-    <div *ngFor="let comment of product.comments">
-        <app-show-comment [comment]="comment"></app-show-comment>
+    <div *ngFor="let comment of product.comments; let index = index">
+        <app-show-comment [index]="index + 1" [comment]="comment"></app-show-comment>
     </div>
     <br>
     <app-create-comment (newComment)="getNewComment($event)" *ngIf="product" [productId]="product.id"></app-create-comment>

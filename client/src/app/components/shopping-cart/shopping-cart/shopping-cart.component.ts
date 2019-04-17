@@ -14,8 +14,8 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
-  private productSerivceSubscription: Subscription;
+  private shoppingCartSubscription: Subscription;
+  private productServiceSubscription: Subscription;
   private orderServiceSubscription: Subscription;
 
   orderedProducts: Array<number>;
@@ -27,14 +27,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     private productService: ProductsService,
     private shoppingCartService: ShoppingCartService,
     private orderService: OrderService,
-    ) {
-  }
+    ) {}
 
   ngOnInit() {
-    this.subscription = this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
+    this.shoppingCartSubscription = this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
       this.orderedProducts = orderedProducts as any;
       if (this.orderedProducts.length) {
-        this.productSerivceSubscription = this.productService.getShoppingCartProducts(this.orderedProducts).subscribe(response => {
+        this.productServiceSubscription = this.productService.getShoppingCartProducts(this.orderedProducts).subscribe(response => {
           this.products = response.map(product => {
             return {
               ...product,
@@ -84,8 +83,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    if (this.productSerivceSubscription) { this.productSerivceSubscription.unsubscribe(); }
+    if (this.shoppingCartSubscription) { this.shoppingCartSubscription.unsubscribe(); }
+    if (this.productServiceSubscription) { this.productServiceSubscription.unsubscribe(); }
     if (this.orderServiceSubscription) { this.orderServiceSubscription.unsubscribe(); }
   }
 

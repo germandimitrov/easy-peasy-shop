@@ -1,24 +1,26 @@
- <br>
-<div class="card">
+<!--Comments-->
+<div class="card card-comments mb-3 wow fadeIn">
+    <div class="card-header font-weight-bold"># {{index}}</div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-2">
-                <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{comment.user.username}}</strong></a>
-                <img src="{{comment.user.picture}}" class="img img-rounded img-fluid"/>
-            </div>
-            <div class="col-md-8">
-                <p>
-                    <!-- <span class="float-right"><i class="text-warning fa fa-star"></i></span> -->
-                    <small *ngIf="stars" class="text-muted">{{stars}}</small>
-                </p>
-                <div class="clearfix"></div>
-                <p>{{comment.content}}</p>
-                <p class="text-secondary">{{comment.createdAt | timeAgo}}</p>
-                <!-- <p>
-                    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                </p> -->
+
+        <div class="media d-block d-md-flex mt-4">
+            <img class="d-flex mb-3 mx-auto" src="{{comment.user.picture}}"
+            alt="Generic placeholder image">
+            <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                <h5 class="mt-0 font-weight-bold"> {{comment.user.username}}
+                    <span class="pull-right stars">
+                            {{stars}}
+                        <!-- <i class="fa fa-reply"></i> -->
+                    </span>
+                </h5>
+                <br />
+                <div class="comment-content">
+                    {{comment.content}}
+                </div>
+                 <br />
+                <span class="posted-on"> Posted: {{comment.createdAt | timeAgo}} </span>
             </div>
         </div>
+
     </div>
 </div>

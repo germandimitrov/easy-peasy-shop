@@ -172,7 +172,7 @@ class usersController {
     delete user.password;
     delete user.salt;
     return sign({ user: user }, settings.secretKey, {
-      expiresIn: '5s'
+      expiresIn: '1h'
     });
   }
 

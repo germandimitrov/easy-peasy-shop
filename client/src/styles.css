@@ -1,2 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 /* Base */
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+.wrapper {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 72px
+}
+
+.copyright {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }

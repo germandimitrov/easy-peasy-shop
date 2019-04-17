@@ -9,8 +9,8 @@ import IComment from 'src/app/core/interfaces/IComment';
 export class ShowCommentComponent implements OnInit {
 
   @Input() comment: IComment;
+  @Input() index;
   stars: any;
-
 
   constructor() {
   }
