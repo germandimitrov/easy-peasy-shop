@@ -1,4 +1,5 @@
-<div class="container mb-4">
+<app-heading [title]="'Your Shopping Cart'"></app-heading>
+<div class="mb-4">
     <div *ngIf="products else empty" class="row">
         <div class="col-12">
             <div class="table-responsive">
@@ -15,7 +16,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let product of products">
-                            <td><img src="{{product.imageUrl}}" width="75" height="75"/> </td>
+                            <td>
+                                <div class="img-wrap"><img src="{{product.imageUrl}}" class="img-thumbnail img-sm"></div>
+                            </td>
                             <td>{{product.title}}</td>
                             <td>In stock</td>
                             <td>

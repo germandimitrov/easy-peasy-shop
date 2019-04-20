@@ -40,9 +40,9 @@ export class NotificationInterceptor implements HttpInterceptor {
         else if (this.api + 'categories' === success.url && success.status === 201) {
           this.toastr.success('New Category Added!');
         }
-        else if (this.api + 'orders' === success.url && success.status === 200 && this.router.url.endsWith('cart')) {
-          this.toastr.success('Your Order has been created!');
-        }
+        // else if (this.api + 'orders' === success.url && success.status === 200 && this.router.url.endsWith('cart')) {
+        //   this.toastr.success('Your Order has been created!');
+        // }
         else if (success.url && success.url.endsWith('comments') && success.status === 200 && this.router.url.includes('product')) {
           this.toastr.success('Your comment has been added!');
         }

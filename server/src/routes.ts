@@ -51,12 +51,12 @@ export default (app: any) => {
 
   // products
   app.get('/products',
-    jwtAuth,
+    // jwtAuth,
     productsController.get
   );
 
   app.get('/products/cart',
-    jwtAuth,
+    // jwtAuth,
     productsController.getProductsInCart
   );
 
@@ -92,7 +92,7 @@ export default (app: any) => {
 
   // categories
   app.get('/categories',
-    jwtAuth,
+    // jwtAuth,
     categoriesController.get
   );
 

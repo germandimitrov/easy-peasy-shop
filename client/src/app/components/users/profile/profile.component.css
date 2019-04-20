@@ -96,6 +96,11 @@
     content: "phone";
   }
 
+  .address::before {
+    content: "address";
+  }
+
+
   .rating {
     margin-top: -16px;
   }
@@ -111,9 +116,6 @@
     margin-right: 10px;
   } */
 
-  .rating::before {
-    content: "rating";
-  }
   .image {
     width: 240px;
     height: 200px;
@@ -169,3 +171,7 @@
     margin-right: 36px;
     margin-top: -60px;
   }
+
+.push-down {
+    margin-top: 120px;
+}

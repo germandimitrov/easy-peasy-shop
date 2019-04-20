@@ -1,4 +1,6 @@
-<div *ngIf="user">
+<app-heading [title]="'Profile'"></app-heading>
+
+<div class="push-down"  *ngIf="user">
   {{user.name}}
   <div class="edit-profile-btn">
       <!-- <Link class="btn btn-primary">
@@ -11,12 +13,12 @@
     </div>
     <div class="rela-block profile-name-container">
       <div class="rela-block user-name" id="user_name">{{user.username}}</div>
-      <div class="rela-block user-desc" id="user_description">{{user.address}}</div>
+      <!-- <div class="rela-block user-desc" id="user_description">{{user.address}}</div> -->
     </div>
     <div class="rela-block profile-card-stats">
       <div class="floated profile-stat email" id="num_works"><br />{{user.email}}<br /></div>
-      <div class="floated profile-stat rating" id="num_following"></div>
-      <div class="floated profile-stat phone" id="num_followers"><br />{{user.phone}}</div>
+      <div class="floated profile-stat " id="num_following"> </div>
+      <div class="floated profile-stat address" id="num_followers"><br />{{user.address}}</div>
     </div>
   </div>
 </div>

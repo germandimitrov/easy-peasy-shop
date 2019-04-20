@@ -37,7 +37,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       title: ['', [Validators.required, Validators.minLength(2)]],
       imageUrl: ['', Validators.required],
       categories: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]], // isNumber pattern
+      price: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]], // isNumber pattern
       description: ['', [Validators.required, Validators.minLength(3)]],
     });
   }

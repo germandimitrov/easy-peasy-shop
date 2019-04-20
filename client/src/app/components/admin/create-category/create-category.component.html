@@ -1,17 +1,20 @@
+<app-heading [title]="'Add New Category'"></app-heading>
 <form #f="ngForm" (submit)="handleSubmit(f)" >
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Category</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1"
-      required
-      name="category"
-      minlength="3"
-      ngModel
-    >
-    <div *ngIf="f.controls.category?.touched && f.controls.category.errors?.required" class="alert alert-danger">
-      Category cannot be empty.
+    <div class="p-3 p-lg-5 border">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Category</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"
+                required
+                name="category"
+                minlength="3"
+                ngModel
+            >
+            <div *ngIf="f.controls.category?.touched && f.controls.category.errors?.required" class="alert alert-danger">
+                Category cannot be empty.
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="invalid" >Create</button>
+        </div>
     </div>
-  </div>
-  <div>
-    <button type="submit" class="btn btn-primary" [disabled]="invalid" >Create</button>
-  </div>
 </form>

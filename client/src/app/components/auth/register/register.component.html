@@ -1,95 +1,97 @@
-  <form #registrationForm="ngForm" (ngSubmit)="handleSubmit()" >
-    <div class="p-3 p-lg-5 border">
-      <div class="form-group row">
-        <div class="col-md-12">
-          <label for="r_username" class="text-black">Username <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="r_username"
-          required
-          name="username"
-          minlength="4"
-          [(ngModel)]="model.username"
-          #username="ngModel"
-          >
-          <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
-            Username must start with a capital letter and must contain only letters and digits.
-          </div>
-        </div>
-        <div class="col-md-12">
-          <label for="r_email" class="text-black">Email <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="r_email"
-          name="email"
-          required
-          pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-          [(ngModel)]="model.email"
-          #email="ngModel">
-          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-            Email Must be valid
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-md-12">
-          <label for="r_address" class="text-black">Address <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" id="r_address"
-          name="address"
-          required
-          name="address"
-          minlength="1"
-          [(ngModel)]="model.address"
-          #address="ngModel"
-          >
-          <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
-            Address is required
-          </div>
-        </div>
-      </div>
-      <!-- <div class="form-group row">
-        <div class="col-md-12">
-          <label for="r_phone" class="text-black">Phone </label>
-          <input type="text" class="form-control" id="r_phone"
-          required
-          name="phone"
-          minlength="1"
-          [(ngModel)]="model.phone"
-          #phone="ngModel"
-          >
-          <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
-            Phone is required
-          </div>
-        </div>
-      </div> -->
+<app-heading [title]="'Register'"></app-heading>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password"
+<form #registrationForm="ngForm" (ngSubmit)="handleSubmit()" >
+<div class="p-3 p-lg-5 border">
+    <div class="form-group row">
+    <div class="col-md-12">
+        <label for="r_username" class="text-black">Username <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="r_username"
         required
-        name="password"
-        pattern="^[A-Za-z\d]{4,16}$"
-        [(ngModel)]="model.password"
-        #password="ngModel">
-        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-          Password must contain only letters and digits and must be between 4 and 16 symbols.
+        name="username"
+        minlength="4"
+        [(ngModel)]="model.username"
+        #username="ngModel"
+        >
+        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username must start with a capital letter and must contain only letters and digits.
         </div>
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword"
+    </div>
+    <div class="col-md-12">
+        <label for="r_email" class="text-black">Email <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="r_email"
+        name="email"
         required
-        name="confirmPassword"
-        [(ngModel)]="model.confirmPassword"
-        #confirmPassword="ngModel">
-        <div [hidden]="password.value === confirmPassword.value || confirmPassword.pristine" class="alert alert-danger">
-          Both passwords must match.
+        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+        [(ngModel)]="model.email"
+        #email="ngModel">
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        Email Must be valid
         </div>
-      </div>
+    </div>
+    </div>
+    <div class="form-group row">
+    <div class="col-md-12">
+        <label for="r_address" class="text-black">Address <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" id="r_address"
+        name="address"
+        required
+        name="address"
+        minlength="1"
+        [(ngModel)]="model.address"
+        #address="ngModel"
+        >
+        <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+        Address is required
+        </div>
+    </div>
+    </div>
+    <!-- <div class="form-group row">
+    <div class="col-md-12">
+        <label for="r_phone" class="text-black">Phone </label>
+        <input type="text" class="form-control" id="r_phone"
+        required
+        name="phone"
+        minlength="1"
+        [(ngModel)]="model.phone"
+        #phone="ngModel"
+        >
+        <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+        Phone is required
+        </div>
+    </div>
+    </div> -->
 
-      <div class="form-group row">
-        <div class="col-lg-12">
-          <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
-        </div>
-      </div>
+    <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password"
+    required
+    name="password"
+    pattern="^[A-Za-z\d]{4,16}$"
+    [(ngModel)]="model.password"
+    #password="ngModel">
+    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password must contain only letters and digits and must be between 4 and 16 symbols.
     </div>
-    <div *ngIf="loginFailed" class="alert alert-danger">
-        {{errMessage}}
     </div>
-  </form>
+    <div class="form-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" class="form-control" id="confirmPassword"
+    required
+    name="confirmPassword"
+    [(ngModel)]="model.confirmPassword"
+    #confirmPassword="ngModel">
+    <div [hidden]="password.value === confirmPassword.value || confirmPassword.pristine" class="alert alert-danger">
+        Both passwords must match.
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <div class="col-lg-12">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
+    </div>
+    </div>
+</div>
+<div *ngIf="loginFailed" class="alert alert-danger">
+    {{errMessage}}
+</div>
+</form>

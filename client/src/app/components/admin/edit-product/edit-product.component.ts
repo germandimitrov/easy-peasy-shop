@@ -86,8 +86,6 @@ export class EditProductComponent implements OnInit, OnDestroy {
     if (this.categorySubscription) {
       this.categorySubscription.unsubscribe();
     }
-
-    // if (this.)
   }
 
 }

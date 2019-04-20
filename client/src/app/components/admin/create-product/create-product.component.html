@@ -1,57 +1,60 @@
+<app-heading [title]="'Create New Product'"></app-heading>
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Title</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="title">
-    <div *ngIf="f.title.errors?.required && f.title.touched" class="alert alert-danger">
-      Title is Required.
+    <div class="p-3 p-lg-5 border">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="title">
+          <div *ngIf="f.title.errors?.required && f.title.touched" class="alert alert-danger">
+            Title is Required.
+          </div>
+          <div *ngIf="f.title.errors?.minlength" class="alert alert-danger">
+              Length must be at least {{f.title.errors.minlength.requiredLength}} chars!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Image Url</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="imageUrl">
+          <div *ngIf="f.imageUrl.errors?.required && f.imageUrl.touched" class="alert alert-danger">
+            Product Image is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Price</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="price">
+          <div *ngIf="f.price.errors?.required && f.price.touched" class="alert alert-danger">
+            Price is required.
+          </div>
+          <div *ngIf="f.price.errors?.pattern && f.price.touched" class="alert alert-danger">
+            Price must be a number and higher then zero.
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Categories</label>
+        </div>
+        <ng-multiselect-dropdown
+          [placeholder]="'Choose one or more categories'"
+          [data]="dropdownList"
+          [(ngModel)]="categories"
+          [settings]="dropdownSettings"
+          formControlName="categories"
+          [ngClass]="multiselect-dropdown"
+        >
+        </ng-multiselect-dropdown>
+        <br>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+        </div>
+        <div *ngIf="f.description.errors?.required && f.description.touched" class="alert alert-danger">
+          Description is required.
+        </div>
+        <div *ngIf="f.description.errors?.minlength" class="alert alert-danger">
+            Length must be at least {{f.description.errors.minlength.requiredLength}} chars!
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary"
+          [disabled]="invalid"
+          >Create</button>
+        </div>
     </div>
-    <div *ngIf="f.title.errors?.minlength" class="alert alert-danger">
-        Length must be at least {{f.title.errors.minlength.requiredLength}} chars!
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Image Url</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="imageUrl">
-    <div *ngIf="f.imageUrl.errors?.required && f.imageUrl.touched" class="alert alert-danger">
-      Product Image is required.
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Price</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="price">
-    <div *ngIf="f.price.errors?.required && f.price.touched" class="alert alert-danger">
-      Price is required.
-    </div>
-    <div *ngIf="f.price.errors?.pattern && f.price.touched" class="alert alert-danger">
-      Price must be a number.
-    </div>
-  </div>
-  <div class="form-group">
-      <label for="exampleFormControlInput1">Categories</label>
-  </div>
-  <ng-multiselect-dropdown
-    [placeholder]="'custom placeholder'"
-    [data]="dropdownList"
-    [(ngModel)]="categories"
-    [settings]="dropdownSettings"
-    formControlName="categories"
-    [ngClass]="multiselect-dropdown"
-  >
-  </ng-multiselect-dropdown>
-  <br>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="description"></textarea>
-  </div>
-  <div *ngIf="f.description.errors?.required && f.description.touched" class="alert alert-danger">
-    Description is required.
-  </div>
-  <div *ngIf="f.description.errors?.minlength" class="alert alert-danger">
-      Length must be at least {{f.description.errors.minlength.requiredLength}} chars!
-  </div>
-  <div>
-    <button type="submit" class="btn btn-primary"
-    [disabled]="invalid"
-    >Create</button>
-  </div>
 </form>

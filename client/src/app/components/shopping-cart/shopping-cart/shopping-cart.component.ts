@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import IProduct from 'src/app/core/interfaces/IProduct';
 import { NgForm } from '@angular/forms';
 import { OrderService } from 'src/app/core/services/order.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -27,7 +30,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     private productService: ProductsService,
     private shoppingCartService: ShoppingCartService,
     private orderService: OrderService,
-    ) {}
+    private router: Router,
+    private toastr: ToastrService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.shoppingCartSubscription = this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
@@ -76,9 +82,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   checkout() {
     if (this.products.length) {
-      this.orderServiceSubscription = this.orderService.create(this.products).subscribe();
-      this.shoppingCartService.emptyCart();
-      this.products = [];
+      this.orderServiceSubscription = this.orderService.create(this.products).subscribe((data) => {
+          this.shoppingCartService.emptyCart();
+          this.products = [];
+          this.toastr.success('Your Order has been Placed!');
+          this.router.navigate(['/']);
+      }, (error) => {
+        this.toastr.warning('You need to be logged in order to place an order');
+      });
     }
   }
 

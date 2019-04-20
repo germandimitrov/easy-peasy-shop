@@ -18,6 +18,7 @@ import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.mod
 import { UsersModule } from './components/users/users.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     ShoppingCartModule,
     UsersModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    // NgbModule.forRoot()
+
   ],
   providers: [
   ],

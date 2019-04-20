@@ -18,7 +18,10 @@ class OrdersController {
   }
 
   async create(req: Request, res: Response, next: NextFunction) {
+    console.log('HELLO');
+
     const orderedProducts = req.body;
+    console.log(req.body);
     try {
       let order = new Order();
       order.user = req.user;

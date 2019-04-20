@@ -6,6 +6,8 @@ import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CommentsModule } from '../comments/comments.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
-    CommentsModule
+    CommentsModule,
+    SharedModule,
+    NgbPaginationModule
   ],
   exports: [
     ProductComponent,

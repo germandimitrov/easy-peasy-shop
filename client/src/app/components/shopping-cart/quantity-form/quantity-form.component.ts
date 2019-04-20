@@ -10,7 +10,6 @@ import { NgForm } from '@angular/forms';
 })
 export class QuantityFormComponent implements OnInit {
 
-
   @ViewChild('qtyForm') qtyForm: NgForm;
   quantity: number = 1;
   @Output() emitQuantity = new EventEmitter();

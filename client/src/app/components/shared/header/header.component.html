@@ -1,13 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-md-5 mb-5">
-  <a class="navbar-brand" routerLink="/">Easy Peasy Web Shop</a>
+<nav class="navbar navbar-expand-lg navbar-custom mb-md-5 mb-5 text-white">
+    <!-- <a class="navbar-brand" href="#"> <img class="logo" src="images/logo-white.png"> LOGO</a> -->
+  <a class="navbar-brand" routerLink="/">
+    <fa name="shopping-basket" size="2x"></fa>
+    <div class="logo-text">
+        Easy Peasy Shop<br />
+        <!-- <span class="logo-lower-text"> Web Shop </span> -->
+    </div>
+   </a>
   <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngClass]="{'show': isShow }" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-      </li>
+      </li> -->
       <li *ngIf="!authService.isUserLogged()" class="nav-item">
         <a class="nav-link" routerLink="/register">Register</a>
       </li>
@@ -27,14 +34,28 @@
         <a class="nav-link" routerLink="admin/products">Manage Products</a>
       </li>
     </ul>
-    <span *ngIf="authService.isUserLogged()" class="navbar-text">
-        <a class="nav-link" routerLink="cart"> <fa name="shopping-cart" size="1x"></fa> {{ orderedProductsCount }} </a>
+    <app-search [show]="showSearch"></app-search>
+    <span class="right-side-nav">
+        <a class="nav-link" routerLink="">
+            <fa name="search" (click)="toggleSearch()" size="1x"></fa>
+        </a>
     </span>
-    <span *ngIf="authService.isUserLogged()" class="navbar-text">
-      <a class="nav-link" routerLink="profile">{{ authService.get('username') }}</a>
+    <div class="icontext">
+        <div class="right-side-nav" [ngClass]="{'round text-light icon-wrap icon-xs bg-secondary': orderedProductsCount }">
+            <a routerLink="cart">
+                <fa class="cart" name="shopping-cart" size="1x"></fa>
+                <span *ngIf="orderedProductsCount" class="notify"> {{ orderedProductsCount }} </span>
+            </a>
+        </div>
+    </div>
+    <span *ngIf="authService.isUserLogged()" class="navbar-text right-side-nav">
+      <a class="nav-link light-link" routerLink="profile">
+          {{ authService.get('username') }}
+        <fa  name="user" size="1x"></fa>
+        </a>
     </span>
-    <span *ngIf="authService.isUserLogged()" class="navbar-text">
-        <a class="nav-link" href="#" (click)="logout()">Logout</a>
+    <span *ngIf="authService.isUserLogged()" class="navbar-text right-side-nav">
+        <a class="nav-link light-link" href="#" (click)="logout()">Logout</a>
     </span>
   </div>
 </nav>

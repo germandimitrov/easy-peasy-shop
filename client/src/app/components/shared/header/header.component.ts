@@ -12,8 +12,10 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   isShow = false;
+  showSearch = false;
   orderedProductsCount = 0;
   shoppingCartSubscription: Subscription;
+  notLoggedIn = false;
 
   constructor(
     private authService: AuthService,
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.notLoggedIn = this.authService.isUserLogged();
     this.shoppingCartSubscription = this.shoppingCartService.shoppingCartData.subscribe(orderedProducts => {
       this.orderedProductsCount = orderedProducts.length;
     });
@@ -40,6 +43,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.shoppingCartSubscription) {
       this.shoppingCartSubscription.unsubscribe();
     }
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 
 }

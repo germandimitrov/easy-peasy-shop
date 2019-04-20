@@ -11,8 +11,14 @@ class productsController {
         .createQueryBuilder('products')
         .leftJoinAndSelect('products.categories', 'categories')
         // .leftJoinAndSelect('products.comments', 'comments');
+      console.log('products get');
 
-      if (req.query.filter) {
+      if (req.query.search) {
+        let { search } = req.query;
+        // like "%${filter}%"
+        query.where(`products.title like "%${search}%"`);
+      }
+      else if (req.query.filter) {
         let { filter } = req.query;
         query.where('categories.name = :name', { name: filter })
       }
@@ -43,7 +49,7 @@ class productsController {
     product = req.body;
     product.categories = req.body.categories;
     if (!product.imageUrl.startsWith('http') && !product.imageUrl.startsWith('https')) {
-      product.imageUrl = 'http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png';
+      product.imageUrl = '/assets/images/product_placeholder.png';
     }
 
     try {

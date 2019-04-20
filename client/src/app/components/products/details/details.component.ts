@@ -4,6 +4,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 import IProduct from 'src/app/core/interfaces/IProduct';
 import { ShoppingCartService } from 'src/app/core/services/shoppingCart.service';
 import { Subscription } from 'rxjs';
+import IComment from 'src/app/core/interfaces/IComment';
 
 @Component({
   selector: 'app-details',
@@ -26,7 +27,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getNewComment(comment) {
+  getNewComment(comment: IComment) {
     this.product.comments.push(comment);
   }
 

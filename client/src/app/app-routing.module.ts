@@ -10,7 +10,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
-  { path: '' , pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login' , component: LoginComponent },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'cart', component: ShoppingCartComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'product/details/:id', component: DetailsComponent,

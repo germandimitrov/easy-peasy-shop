@@ -21,6 +21,7 @@ export class OrderService {
   }
 
   create(orderedProducts: IProduct[]) {
+    console.log(orderedProducts);
     return this.http.post(this.apiUrl + 'orders', orderedProducts);
   }
 

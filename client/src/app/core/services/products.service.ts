@@ -15,12 +15,21 @@ export class ProductsService {
   constructor(private http: HttpClient) {
   }
 
-  get(category?: string): Observable<IProduct[]> {
-    if (category) {
-      return this.http.get<IProduct[]>(this.apiUrl + 'products', {params: {
-        filter: category
-      }});
-    } else {
+  get(params?: object): Observable<IProduct[]> {
+
+    if (params && params.hasOwnProperty('filter')) {
+      return this.http.get<IProduct[]>(this.apiUrl + 'products', { params: {
+          filter: params['filter']
+        }
+      });
+    }
+    else if (params && params.hasOwnProperty('search')) {
+        return this.http.get<IProduct[]>(this.apiUrl + 'products', { params: {
+          search: params['search']
+        }
+      });
+    }
+    else {
       return this.http.get<IProduct[]>(this.apiUrl + 'products');
     }
   }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { QuantityFormComponent } from './quantity-form/quantity-form.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     QuantityFormComponent,

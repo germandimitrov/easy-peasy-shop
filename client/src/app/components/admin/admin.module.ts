@@ -9,6 +9,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
 import { ListProductsComponent } from './list-products/list-products.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ListProductsComponent } from './list-products/list-products.component';
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
+    SharedModule
   ],
   providers: [
   ],

@@ -14,6 +14,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   products: Array<IProduct>;
   productSubscription: Subscription;
+  page: number = 1;
+  pageSize = 5;
 
   constructor(
     private productService: ProductsService,
@@ -21,7 +23,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.productSubscription = this.productService.get(params.filter).subscribe(response => this.products = response);
+      this.productSubscription = this.productService.get(params).subscribe(response => this.products = response);
     });
   }
 

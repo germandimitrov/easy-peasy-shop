@@ -20,7 +20,7 @@ createConnection().then(async connection => {
   const port = 5001;
 
   const corsOptions = {
-    origin: `http://localhost:4201`,
+    origin: `http://localhost:4200`,
     optionsSuccessStatus: 200
   }
 
