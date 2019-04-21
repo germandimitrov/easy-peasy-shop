@@ -11,18 +11,16 @@ class productsController {
         .createQueryBuilder('products')
         .leftJoinAndSelect('products.categories', 'categories')
         // .leftJoinAndSelect('products.comments', 'comments');
-      console.log('products get');
 
       if (req.query.search) {
         let { search } = req.query;
-        // like "%${filter}%"
         query.where(`products.title like "%${search}%"`);
       }
       else if (req.query.filter) {
         let { filter } = req.query;
         query.where('categories.name = :name', { name: filter })
       }
-      let products = await query.getMany();
+      let products = await query.orderBy("RAND()").getMany();
 
       // let products = productsData.map(p => {
       //   let ratingSum = 0;

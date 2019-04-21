@@ -57,6 +57,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.shoppingCartService.removeFromCart(productId);
     const index = this.orderedProducts.indexOf(productId);
     this.products.splice(index, 1);
+    this.calculateTotalPrice();
   }
 
   getQuantity(quantity: number, product: IProduct): void {

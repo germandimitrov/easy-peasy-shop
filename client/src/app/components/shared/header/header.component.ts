@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
   ) {}
 
   ngOnInit() {
@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    this.shoppingCartService.emptyCart();
     this.router.navigate(['/']);
   }
 

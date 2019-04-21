@@ -1,5 +1,5 @@
 <form #f="ngForm" *ngIf="show">
     <div class="form-group floating-label-form-group controls mb-0 pb-2">
-        <input type="text" (keyup.enter)="handleSearch(f.value.s)" (blur)="handleSearch(f.value.search)" ngModel name="search" />
+        <input type="text" (keyup.enter)="handleSearch(f.value.search)" (blur)="handleSearch(f.value.search)" ngModel name="search" />
     </div>
 </form>

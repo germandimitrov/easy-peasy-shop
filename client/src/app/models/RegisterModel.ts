@@ -3,6 +3,6 @@ export default class RegisterModel {
     public username: string,
     public email: string,
     public address: string,
-    // public phone: number
+    public picture: string,
   ) {}
 }

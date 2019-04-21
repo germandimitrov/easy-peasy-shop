@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   hasError: boolean;
 
   constructor(private auth: AuthService, private router: Router, private authService: AuthService) {
-    this.model = new RegisterModel('', '', '');
+    this.model = new RegisterModel('', '', '', '');
   }
 
   ngOnInit() {

@@ -1232,12 +1232,6 @@ html, body {
     padding-bottom: 72px
 }
 
-.copyright {
-    background-color: #2C3E50;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
 
 .text-white {
     color: #f7fffc !important;
@@ -1248,6 +1242,7 @@ html, body {
     padding-left: 14px;
     padding-right: 15px;
     font-weight: 600;
+    padding-top: 2px;
 }
 
 .logo-lower-text {
@@ -1255,7 +1250,7 @@ html, body {
 }
 
 .cart {
-    font-size: 25px;
+    font-size: 22px;
     padding-right: 6px;
 }
 
@@ -1333,3 +1328,44 @@ html, body {
    -webkit-box-shadow: none !important;
    box-shadow: none !important;
  }
+
+.push-down {
+  margin-bottom: 30px;
+}
+
+.navbar-custom {
+  background-color: #2C3E50;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(255,255,255,.8);
+  /* color: white; */
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(255,255,255,.5);
+  /* color: white; */
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+.copyright {
+    color:rgba(255,255,255,.5);
+    background-color: #2C3E50;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.logo-text {
+  text-decoration: none;
+  color:white !important;
+  padding-top: 10px;
+}

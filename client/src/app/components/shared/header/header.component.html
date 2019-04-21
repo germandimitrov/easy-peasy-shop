@@ -1,13 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-custom mb-md-5 mb-5 text-white">
-    <!-- <a class="navbar-brand" href="#"> <img class="logo" src="images/logo-white.png"> LOGO</a> -->
-  <a class="navbar-brand" routerLink="/">
-    <fa name="shopping-basket" size="2x"></fa>
-    <div class="logo-text">
-        Easy Peasy Shop<br />
-        <!-- <span class="logo-lower-text"> Web Shop </span> -->
-    </div>
-   </a>
-  <button class="navbar-toggler" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand nav-link logo-text" routerLink="/">EASY PEASY SHOP</a>
+  <button class="navbar-toggler navbar-dark" (click)="toggleMenu()" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngClass]="{'show': isShow }" id="navbarText">

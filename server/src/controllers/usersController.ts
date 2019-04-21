@@ -33,7 +33,7 @@ class usersController {
         !user.picture.startsWith('http')
     ) {
       // set default avatar
-      user.picture = 'https://secure.gravatar.com/avatar/e4dcf6591693d348343f84c9ab65dfcf?s=100&r=g&d=mm';
+      user.picture = '/assets/images/product_placeholder.png';
     }
 
     user.salt = salt;
@@ -74,13 +74,13 @@ class usersController {
 
     if (!user) {
       return res.status(404).json({
-        errors: [{ msg: 'Invalid Username or Password.' }]
+        errors: [{ msg: 'Invalid Email or Password.' }]
       });
     }
 
     if (!this.validatePassword(user, req.body.password)) {
       return res.status(404).json({
-        errors: [{ msg: 'Invalid Username or Password.' }]
+        errors: [{ msg: 'Invalid Email or Password.' }]
       });
     }
 

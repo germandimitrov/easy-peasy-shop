@@ -4,9 +4,9 @@
         <a routerLink="product/details/{{product.id}}" ><img class="card-img-top" src="{{product.imageUrl}}" alt=""></a>
         <div class="card-body">
             <h4 class="card-title">
-                <a href="#">{{product.title}}</a>
+                <a routerLink="product/details/{{product.id}}">{{product.title}}</a>
             </h4>
-            <button (click)="handleOrder(product.id)" class="pull-right btn btn-primary">Order Me</button>
+            <button (click)="handleOrder(product.id)" class="pull-right btn btn-primary">Buy</button>
             <h5>${{product.price}}</h5>
             <p class="card-text">{{product.description}}</p>
         </div>

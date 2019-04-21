@@ -59,14 +59,9 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.dropdownList.push(category);
   }
 
-  // onItemSelect(category: any) {
-  //   this.model.categories.push(category);
-  // }
-
   handleSubmit() {
     this.productSubscription = this.productService.create(this.form.value).subscribe(response => {
       this.product = response;
-      // this.model.categories = [];
       this.form.reset();
     });
   }
