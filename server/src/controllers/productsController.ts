@@ -123,7 +123,6 @@ class productsController {
     try {
       let product = await getRepository(Product).findOne(req.params.id);
       let test = await product.remove();
-      console.log(test);
       return res.status(200).json({'message': 'product has been deleted!'});
     } catch (error) {
       console.log(error);
